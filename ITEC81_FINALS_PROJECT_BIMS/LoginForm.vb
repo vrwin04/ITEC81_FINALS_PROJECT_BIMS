@@ -1,7 +1,15 @@
 ﻿Imports System.Data.OleDb
 
 Public Class LoginForm
+    Private Sub LoginForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Center the panel programmatically
+        pnlCard.Location = New Point((Me.Width - pnlCard.Width) / 2, (Me.Height - pnlCard.Height) / 2)
+    End Sub
+
+    ' Login Logic (Same as before but linked to new button)
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
+        ' ... (Use CRUD logic from previous prompt) ...
+        ' Connect(), Check DB, Open Dashboard...
         Connect()
         cmd = New OleDbCommand("SELECT * FROM tblUsers WHERE Username=@u AND Password=@p", con)
         cmd.Parameters.AddWithValue("@u", txtUser.Text)
@@ -11,18 +19,12 @@ Public Class LoginForm
         If dr.HasRows Then
             dr.Read()
             Dim role As String = dr("Role").ToString()
-            MsgBox("Login Successful! Role: " & role)
-            Dim dash As New MainDashboard(role)
-            dash.Show()
+            Dim main As New MainDashboard(role)
+            main.Show()
             Me.Hide()
         Else
-            MsgBox("Invalid Credentials")
+            MsgBox("Access Denied.")
         End If
         con.Close()
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-        ' Center the login box programmatically just to be safe
-        Panel1.Location = New Point((Me.Width - Panel1.Width) / 2, (Me.Height - Panel1.Height) / 2)
     End Sub
 End Class

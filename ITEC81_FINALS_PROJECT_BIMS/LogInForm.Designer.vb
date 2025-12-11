@@ -4,117 +4,75 @@ Partial Class LoginForm
 
     <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        Try
-            If disposing AndAlso components IsNot Nothing Then
-                components.Dispose()
-            End If
-        Finally
-            MyBase.Dispose(disposing)
-        End Try
+        If disposing AndAlso components IsNot Nothing Then components.Dispose()
+        MyBase.Dispose(disposing)
     End Sub
 
     Private components As System.ComponentModel.IContainer
-
+    Friend WithEvents pnlCard As System.Windows.Forms.Panel
     Friend WithEvents txtUser As System.Windows.Forms.TextBox
     Friend WithEvents txtPass As System.Windows.Forms.TextBox
     Friend WithEvents btnLogin As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents lblHead As System.Windows.Forms.Label
+    Friend WithEvents lblSub As System.Windows.Forms.Label
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.pnlCard = New System.Windows.Forms.Panel()
         Me.txtUser = New System.Windows.Forms.TextBox()
         Me.txtPass = New System.Windows.Forms.TextBox()
         Me.btnLogin = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel1.SuspendLayout()
-        Me.SuspendLayout()
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.btnLogin)
-        Me.Panel1.Controls.Add(Me.txtPass)
-        Me.Panel1.Controls.Add(Me.txtUser)
-        Me.Panel1.Location = New System.Drawing.Point(230, 100)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(340, 300)
-        Me.Panel1.TabIndex = 0
-        '
-        'Label1 (Title)
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(44, 62, 80)
-        Me.Label1.Location = New System.Drawing.Point(80, 30)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(180, 30)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "SYSTEM LOGIN"
-        '
-        'Label2 (Username)
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(30, 80)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Text = "Username:"
-        '
-        'txtUser
-        '
-        Me.txtUser.Location = New System.Drawing.Point(30, 100)
-        Me.txtUser.Name = "txtUser"
-        Me.txtUser.Size = New System.Drawing.Size(280, 25)
-        Me.txtUser.TabIndex = 1
-        '
-        'Label3 (Password)
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(30, 140)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Text = "Password:"
-        '
-        'txtPass
-        '
-        Me.txtPass.Location = New System.Drawing.Point(30, 160)
-        Me.txtPass.Name = "txtPass"
-        Me.txtPass.Size = New System.Drawing.Size(280, 25)
-        Me.txtPass.PasswordChar = "*"c
-        Me.txtPass.TabIndex = 2
-        '
-        'btnLogin
-        '
-        Me.btnLogin.BackColor = System.Drawing.Color.FromArgb(44, 62, 80)
-        Me.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnLogin.ForeColor = System.Drawing.Color.White
-        Me.btnLogin.Location = New System.Drawing.Point(30, 220)
-        Me.btnLogin.Name = "btnLogin"
-        Me.btnLogin.Size = New System.Drawing.Size(280, 40)
-        Me.btnLogin.TabIndex = 3
-        Me.btnLogin.Text = "LOGIN"
-        Me.btnLogin.UseVisualStyleBackColor = False
-        '
-        'LoginForm
-        '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.FromArgb(52, 152, 219)
-        Me.ClientSize = New System.Drawing.Size(800, 500)
-        Me.Controls.Add(Me.Panel1)
-        Me.Font = New System.Drawing.Font("Segoe UI", 9.75!)
+        Me.lblHead = New System.Windows.Forms.Label()
+        Me.lblSub = New System.Windows.Forms.Label()
+
+        ' FORM
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "LoginForm"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        Me.ResumeLayout(False)
+        Me.BackColor = System.Drawing.Color.FromArgb(41, 128, 185) ' Background Blue
+
+        ' CARD (Center Box)
+        Me.pnlCard.BackColor = System.Drawing.Color.White
+        Me.pnlCard.Size = New System.Drawing.Size(400, 450)
+        ' Note: Centering logic is in .vb file Paint event
+
+        ' LABELS
+        Me.lblHead.Text = "BARANGAY SYSTEM"
+        Me.lblHead.Font = New System.Drawing.Font("Segoe UI", 20.0!, System.Drawing.FontStyle.Bold)
+        Me.lblHead.ForeColor = System.Drawing.Color.FromArgb(44, 62, 80)
+        Me.lblHead.Location = New System.Drawing.Point(50, 50)
+        Me.lblHead.AutoSize = True
+
+        Me.lblSub.Text = "Please login to continue"
+        Me.lblSub.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.lblSub.ForeColor = System.Drawing.Color.Gray
+        Me.lblSub.Location = New System.Drawing.Point(50, 90)
+        Me.lblSub.AutoSize = True
+
+        ' TEXTBOXES (Styled)
+        Me.txtUser.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.txtUser.Location = New System.Drawing.Point(50, 150)
+        Me.txtUser.Size = New System.Drawing.Size(300, 30)
+        Me.txtUser.PlaceholderText = "Username"
+
+        Me.txtPass.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.txtPass.Location = New System.Drawing.Point(50, 200)
+        Me.txtPass.Size = New System.Drawing.Size(300, 30)
+        Me.txtPass.PasswordChar = "●"c
+        Me.txtPass.PlaceholderText = "Password"
+
+        ' BUTTON
+        Me.btnLogin.Text = "SECURE LOGIN"
+        Me.btnLogin.BackColor = System.Drawing.Color.FromArgb(41, 128, 185)
+        Me.btnLogin.ForeColor = System.Drawing.Color.White
+        Me.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnLogin.FlatAppearance.BorderSize = 0
+        Me.btnLogin.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.btnLogin.Location = New System.Drawing.Point(50, 280)
+        Me.btnLogin.Size = New System.Drawing.Size(300, 50)
+        Me.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand
+
+        ' Add to Card
+        Me.pnlCard.Controls.AddRange({lblHead, lblSub, txtUser, txtPass, btnLogin})
+        Me.Controls.Add(Me.pnlCard)
     End Sub
 End Class

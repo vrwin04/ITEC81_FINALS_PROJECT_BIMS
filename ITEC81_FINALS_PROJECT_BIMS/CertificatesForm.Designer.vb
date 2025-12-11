@@ -2,12 +2,21 @@
 Partial Class CertificatesForm
     Inherits System.Windows.Forms.Form
 
+    ' DITO ANG FIX: Idagdag ang components declaration
+    Private components As System.ComponentModel.IContainer
+
     <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        If disposing AndAlso components IsNot Nothing Then components.Dispose()
-        MyBase.Dispose(disposing)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
     End Sub
 
+    ' ... (Ituloy ang iba pang controls declarations sa baba tulad ng txtName, btnPrint, etc.)
     Friend WithEvents txtName As System.Windows.Forms.TextBox
     Friend WithEvents cmbCertType As System.Windows.Forms.ComboBox
     Friend WithEvents btnPrint As System.Windows.Forms.Button
@@ -16,6 +25,7 @@ Partial Class CertificatesForm
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        ' ... (Huwag baguhin ang nasa loob ng InitializeComponent) ...
         Me.txtName = New System.Windows.Forms.TextBox()
         Me.cmbCertType = New System.Windows.Forms.ComboBox()
         Me.btnPrint = New System.Windows.Forms.Button()

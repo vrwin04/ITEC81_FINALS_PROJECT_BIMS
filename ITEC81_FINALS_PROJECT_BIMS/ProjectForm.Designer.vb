@@ -2,12 +2,21 @@
 Partial Class ProjectsForm
     Inherits System.Windows.Forms.Form
 
+    ' DITO ANG FIX: Idagdag ang components declaration
+    Private components As System.ComponentModel.IContainer
+
     <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
-        If disposing AndAlso components IsNot Nothing Then components.Dispose()
-        MyBase.Dispose(disposing)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
     End Sub
 
+    ' ... (Controls declarations)
     Friend WithEvents pnlLeft As System.Windows.Forms.Panel
     Friend WithEvents dgvProjects As System.Windows.Forms.DataGridView
     Friend WithEvents txtProject As System.Windows.Forms.TextBox
